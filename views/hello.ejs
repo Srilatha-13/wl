@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet"  type="text/css" href="/style.css">
+        <title>Hello</title>
+    </head>
+    <body>
+        <h1>Students Details<h1>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Age</td>
+                    <td>Department</td>
+                    <td>Operations</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for(var i = 0; i < students.length; i++) { %>
+                <tr>
+                    <td><%= students[i].name_student %></td>
+                
+                    <td><%= students[i].age_student %></td>
+                
+                    <td><%= students[i].dept_student %></td>
+                
+                    <td>
+                    <form action="/student/delete/<%= students[i].id_student %>" method="post">
+                        <input type="submit" value="Delete">
+                    </form>
+                    <a href="/student/update/<%= students[i].id_student %>">Edit</a>
+                </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </body>
+</html>
