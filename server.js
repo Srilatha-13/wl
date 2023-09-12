@@ -9,7 +9,7 @@ const morgan = require("morgan");
 const db = require("./db");
 
 // extra functions
-app.use(morgan());
+app.use(morgan('dev'));
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -19,7 +19,7 @@ app.use(express.json());
 
 // get route
 app.get("/", (req, res) => {
-    db.query("SELECT * FROM students", (error, result) => {
+    db.query("SELECT * FROM student", (error, result) => {
         try {
             if (!error) {
                 res.render("hello", { students: result });
@@ -40,7 +40,7 @@ app.get("/create", (req, res) => {
 app.get("/student/update/:id", (req, res) => {
     const id = req.params.id;
     db.query(
-        `SELECT * FROM students WHERE id_student = ${id}`,
+        `SELECT * FROM student WHERE id_student = ${id}`,
         (error, results) => {
             if (!error) {
                 res.render("update", { students: results[0] });
@@ -56,7 +56,7 @@ app.get("/student/update/:id", (req, res) => {
 app.post("/student/create", (req, res) => {
     const { name_student, age_student, dept_student } = req.body;
     db.query(
-        "INSERT INTO students(name_student, age_student, dept_student) VALUES(?, ?, ?)",
+        "INSERT INTO student(name_student, age_student, dept_student) VALUES(?, ?, ?)",
         [name_student, age_student, dept_student],
         (error, result) => {
             if (!error) {
@@ -74,7 +74,7 @@ app.post("/student/delete/:id", (req, res) => {
     const id = req.params.id;
 
     db.query(
-        `DELETE FROM students WHERE id_student = ${id}`,
+        `DELETE FROM student WHERE id_student = ${id}`,
         (error, results) => {
             if (!error) {
                 res.redirect("/");
@@ -90,7 +90,7 @@ app.post("/student/update/:id", (req, res) => {
     const id = req.params.id;
     const { name_student, age_student, dept_student } = req.body;
     db.query(
-        "UPDATE students SET name_student = ? , age_student = ?, dept_student = ? WHERE id_student = ?",
+        "UPDATE student SET name_student = ? , age_student = ?, dept_student = ? WHERE id_student = ?",
         [name_student, age_student, dept_student, id],
         (error, result) => {
             if (!error) {

@@ -1,4 +1,62 @@
-h1 {
-    background-color: aqua;
-    color: red;
+/* Reset some default styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
+
+/* Header styles */
+h1 {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Table styles */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Delete button style */
+input[type="submit"] {
+    background-color: #e74c3c;
+    color: #000000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Edit link style */
+a[href^="/student/update/"] {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+/* Hover effect for edit link */
+a[href^="/student/update/"]:hover {
+    background-color: #2980b9;
+}
+
